@@ -1,7 +1,5 @@
 package com.epam.algorithms;
 
-import java.util.stream.IntStream;
-
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -71,9 +69,11 @@ public class ArrayTasks {
      * "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
-        return IntStream.rangeClosed(1, arr.length)
-                .mapToObj(i -> arr[arr.length - i])
-                .toArray(String[]::new);
+        String[] newArray = new String[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            newArray[i] = arr[arr.length - 1 - i];
+        }
+        return newArray;
     }
 
     /**
