@@ -6,8 +6,8 @@ package com.epam.conditions;
  */
 public class TriangleSidesValidator {
 
-    private static final String VALID_TRIANGLE_MESSAGE = "This is a valid triangle";
-    private static final String INVALID_TRIANGLE_MESSAGE = "This is not a valid triangle";
+    private static final String VALID_TRIANGLE_MESSAGE = "this is a valid triangle";
+    private static final String INVALID_TRIANGLE_MESSAGE = "it's not a triangle";
 
     /**
      * Validates if the given side lengths form a valid triangle.
