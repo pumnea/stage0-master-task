@@ -7,6 +7,7 @@ public class DigitsSumCalculator {
                 .chars()
                 .map(Character::getNumericValue)
                 .sum();
+        System.out.println(result);
     }
 
 }
