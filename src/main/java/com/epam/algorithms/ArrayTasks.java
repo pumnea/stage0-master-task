@@ -1,5 +1,7 @@
 package com.epam.algorithms;
 
+import java.util.stream.IntStream;
+
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -11,7 +13,7 @@ public class ArrayTasks {
      * Return a String[] array that will list all the seasons of the year, starting with winter.
      */
     public String[] seasonsArray() {
-        return null;
+        return new String[]{"Winter", "Spring", "Summer", "Autumn"};
     }
 
     /**
@@ -23,7 +25,11 @@ public class ArrayTasks {
      * length = 1  -> [1] length = 3  -> [1, 2, 3] length = 5  -> [1, 2, 3, 4, 5]
      */
     public int[] generateNumbers(int length) {
-        return null;
+        int[] newArray = new int[length];
+        int j = 0;
+        for (int i = 1; i <= length; i++)
+            newArray[j++] = i;
+        return newArray;
     }
 
     /**
@@ -34,7 +40,10 @@ public class ArrayTasks {
      * arr = [1, 3, 5]   -> sum = 9 arr = [5, -3, -4] -> sum = -2
      */
     public int totalSum(int[] arr) {
-        return 0;
+        int sum = 0;
+        for (int i : arr)
+            sum += i;
+        return sum;
     }
 
     /**
@@ -46,7 +55,11 @@ public class ArrayTasks {
      * arr = [99, -7, 102], number = -7    ->   2 arr = [5, -3, -4],   number = 10    ->  -1
      */
     public int findIndexOfNumber(int[] arr, int number) {
-        return 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == number)
+                return i;
+        }
+        return -1;
     }
 
     /**
@@ -54,23 +67,39 @@ public class ArrayTasks {
      * <p>
      * Example:
      * <p>
-     * arr = ["Bob", "Nick"]               -> ["Nick", "Bob"] arr = ["pineapple", "apple", "pen"] -> ["pen", "apple",
+     * arr = ["Bob", "Nick"] -> ["Nick", "Bob"] arr = ["pineapple", "apple", "pen"] -> ["pen", "apple",
      * "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
-        return null;
+        return IntStream.rangeClosed(1, arr.length)
+                .mapToObj(i -> arr[arr.length - i])
+                .toArray(String[]::new);
     }
 
     /**
      * Return new int[] array obtained from arr int[] array by choosing positive numbers only. P.S. 0 is not a positive
-     * number =)
+     * number =
      * <p>
      * Example:
      * <p>
      * arr = [1,-2, 3]      -> [1, 3] arr = [-1, -2, -3]   -> [] arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        return null;
+        int[] newArray = new int[arr.length];
+        int j = 0;
+        int count = 0;
+        for (int k : arr) {
+            if (k > 0) {
+                newArray[j++] = k;
+                count++;
+            }
+        }
+        j = 0;
+        int[] array = new int[count];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = newArray[j++];
+        }
+        return array;
     }
 
     /**
@@ -83,7 +112,26 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]] arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        return null;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < arr.length; j++) {
+                if (arr[j - 1].length > arr[j].length) {
+                    int[] temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length - 1; j++) {
+                if (arr[i][j] > arr[i][j + 1]) {
+                    int temp = arr[i][j];
+
+                    arr[i][j + 1] = temp;
+                }
+            }
+        }
+        return arr;
     }
 
 }
